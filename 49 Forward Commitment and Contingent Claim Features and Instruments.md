@@ -32,12 +32,60 @@
     - exchange a *series of payment* on *multiple settlement dates* over a period of time
     - on the payment date, two payments from counterparty are offset-->only *one net payment* is made
   - counterparty risk:
-    - trade in dealer market
+    - trade in dealer market-->high counterparty risk, unless 有CCH requires <u>margin deposit and make-to-market payments</u>
+  - Basic Components:
+    - fixed-for-floating interest swap in term of cash flow
+      - fixed: swap rate
+      - floating: market reference rate
+        - related payment=notion principle amount * reference float rate@on the end of last payment date
+    - maturity period
+    - periodic payment frequency
+    - notional principle
+    - initialization value=0
+      - during life of swaps, value of the swap for one party>0, for another party < 0
+  - hedge: firm converts *floating-rate liability* into a *fixed-rate* one, **hedging** the interest rate risk.
+  - Swaps and Forward:
+    - swap is a series of forward contracts
+    - each forward set on one swap settlement date
+    - interest rate forward settle at <u>beginning</u> of each term==PV of end-term swap payments
 - Credit Swaps
-- Options
+  - **protection buyers** *pay fixed amount* on each settlement date
+    - hedging the default risk
+    - pay the <u>yield premium</u> on reference bonds, the amount=expected loss in default event * probability of default
+  - **protection seller** only pays when <u>has a credit event</u>, the amount is to offset the loss on reference securities
+    - receive the default risk premium(credit spread)
+    - take on the risk of default
+- Options: call and put
+  - element to consider: strike price(exercise price), time to expiration, put seller(the option writer)
+    - one-way nature:
+      - for put option, if <u>exercise price<= spot price</u>, the option buyer has no reason to exercise it, they will let option <u>expire</u>.
+      - if exercise price > spot market price, exercise the option, the option buyers赚差价（现在市场价与先前定的价格）
+  - value at expiration & profit from long/short position
+    - option premium: the price of option. With a <u>non-zero initialization price</u>
+    - value at expiration:
+      - call option: $Max(0, S-K)$
+        - S: price of underlying at expiration
+        - K: strike price
+        - when S< K-->call option value=0
+      - put option: $Max(0,K-S)$
+    - the *profit* of <u>option seller</u>: premium received-option payoff at expiration
+      - if the payoff>premium received-->writer gets a loss
+      - loss for call option seller: **unlimited** loss
+        - because S is unlimited
+        - the seller becomes lose money since from S>premium+K(the break-even point)
+        - the profit is up to maximum when S< K, amount=premium
+      - loss for put option seller: maximum=K
+        - because S has minimum value 0
+        - becomes loss when S< K-premium (the break-even point, the maximum loss is limited at this amount)
+        - the maximum profit when S>K == premium
+    - the profit of <u>option buyer</u>: value payoff-premium
+      - loss of buyers: the amount they paid for option, if option is expired, namely maximum loss is premium
+      - the call option start to gain: when S>premium+K, the profit potential is unlimited
+      - the put option start to gain: when S< K-premium, the amount is limited: maximum up to K-premium
+    - the *sum of profits* between buyers and sellers always==0, zero-sum game.
 - forward commitment:
   - legally binding promise to do actions in future
-  - content: forward contract, future contract, most swap
+  - content: forward contract, future contract, *most swap*
 - contingent commitment:
-  - claim/payoff depends on a particular event
+  - claim/payoff depends *on a particular event*
   - content: options(underlying being above or below the exercise price), credit default swap(CDS)(trigger by credit default)
